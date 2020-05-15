@@ -1,0 +1,30 @@
+<mat-card class="example-card">
+      <mat-card-header>
+          <mat-card-title>{{company.companyName}}</mat-card-title>
+          <mat-card-subtitle>{{ company.email }} </mat-card-subtitle>
+      </mat-card-header>
+      <!-- <img mat-card-image src="{{item.itemImagePath}}" alt="Photo of the Vehicle"> -->
+      <mat-card-content>
+              
+          <p>
+            {{ company.address }}<br>
+              Available:  <b></b>{{ company.id }}<br>                
+          </p>
+
+      </mat-card-content>
+
+      <mat-card-actions *ngIf="register">   
+                  <button mat-raised-button color="warn" (click)="onRegister()" >Request</button>
+      </mat-card-actions>
+
+      <mat-card-actions *ngIf="!register">   
+        <button mat-raised-button color="primary" (click)="onCancelRequest()" >Cancel Request</button>
+      </mat-card-actions>
+      
+</mat-card>
+
+
+
+
+
+

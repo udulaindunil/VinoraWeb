@@ -1,0 +1,46 @@
+<div class="row">
+ 
+  <!-- <p>Company Name : {{confirmOrder.companyName}}</p>
+  <p>Shop Name : {{confirmOrder.shopName}}</p> -->
+
+    <div class="col" *ngIf="company | async; let company; else ">
+        <div class="row" *ngFor="let company of company" > 
+        
+          <div class="col col-6">    
+              <p>
+                <!-- <b>{{company.companyName}</b> -->
+                <b>Purches Date: </b> {{confirmOrder.createDate}}<br>
+                <b>Total Amount: </b> {{confirmOrder.total}} .00 Rs/-<br>
+              
+              </p>
+            
+          </div> 
+        
+        </div>
+    </div>
+</div>
+
+
+<div   *ngIf="items | async; let items ; else">
+ 
+  <table style="font-size: 10px;">
+    <th>Item Name</th>
+    <th>Item quantity</th>
+    <th>Item unit Price</th>
+    <th>Item total</th>
+    <div  *ngFor="let item of items">
+      <tr>
+      <td><p>{{item.itemName}}</p></td>
+      <td><p>{{item.quantity}}</p></td>
+      <td><p>{{item.unitPrice}}</p></td>
+      <td><p>{{item.total}}</p></td>
+
+    </tr>
+    </div>
+  </table> 
+</div>
+
+
+<br>
+<br>
+<br>

@@ -1,0 +1,41 @@
+
+    <mat-card class="example-card">
+        <mat-card-header>
+            <mat-card-title>{{vehicle.number}}</mat-card-title>
+            <mat-card-subtitle>{{vehicle.model}}</mat-card-subtitle>
+        </mat-card-header>
+        <img mat-card-image src="{{vehicle.photo_url}}" alt="Photo of the Vehicle">
+        <mat-card-content>
+            <p>Owner        : <b>{{vehicle.ownerName}}</b><br>
+               Owner mobile: <b>{{vehicle.ownerMobile}}</b><br>
+               Owner address: <b>{{vehicle.ownerAddress}}</b><br>
+                           
+            </p>
+            <mat-card-actions>
+                    <button mat-raised-button color="primary" type="submit" >Allocate Job</button>
+                    <button mat-raised-button color="warn" type="submit" >Remove</button>
+            </mat-card-actions>
+            
+           
+
+        </mat-card-content>
+       
+            <!-- <form (ngSubmit)="toCart(f)" #f="ngForm" >
+                    <table class="example-full-width" cellspacing="0">
+                        <tr>
+                            <td><mat-form-field class="example-full-width">
+                                <input matInput type="number" placeholder="Quantity" name="quantity" ngModel>
+                            </mat-form-field></td>
+                            <div class="input-group-append">
+                                <span class="input-group-text">Kg</span>
+                            </div>
+                        </tr>
+                    </table>
+                    
+                    <button mat-raised-button color="primary" type="submit" >To Cart</button>
+            </form> -->
+       
+    </mat-card>
+    <br>
+
+ 

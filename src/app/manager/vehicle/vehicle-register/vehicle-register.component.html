@@ -1,0 +1,41 @@
+<form  [formGroup]="vehicleProfileForm" (ngSubmit)="onAddVehicle(f)" #f="ngForm">
+        <input type="hidden" formControlName="$id">
+
+                 <mat-form-field class="example-full-width">
+                         <input matInput placeholder="Vehicle number" formControlName="number_plate" required>
+                 </mat-form-field>
+                <mat-form-field class="example-full-width">
+                        <input matInput placeholder="Vehicle model" formControlName="vehicle_model" required>
+                      </mat-form-field>     
+                <mat-form-field class="example-full-width">
+                        <input matInput placeholder="Owner name" formControlName="owner_name" required>
+                      </mat-form-field>   
+                <mat-form-field class="example-full-width">
+                        <input matInput placeholder="Owner address" formControlName="owner_address" required>
+                      </mat-form-field>  
+
+               
+                <mat-form-field class="example-full-width">
+                        
+                        <input matInput placeholder="Owner mobile" formControlName="owner_mobile" required>
+                      </mat-form-field> 
+                  <label>
+                     <input type="file" (change)="selectFile($event)">
+                  </label>
+                  <div class="row" style="margin-left: 5px;" *ngIf="percentage!=0">
+                  <mat-progress-bar mode="determinate" value="{{percentage}}"></mat-progress-bar>
+                  
+                         <label >Uploading : {{percentage}} %</label> 
+                  </div>
+                   
+                <label>
+                                <button type="reset" mat-raised-button color="basic" style="margin-right: 25px;">Reset</button>
+                                <button type="submit"  mat-raised-button color="primary">Register</button>
+                                
+                        
+                </label>
+      
+</form>
+
+
+

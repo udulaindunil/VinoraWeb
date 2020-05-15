@@ -1,0 +1,133 @@
+
+
+
+
+<div [ngClass]="{reOrderCss: reOrder}">
+
+        <mat-card class="example-card" (click)="onSelect()"  >
+            
+           
+            <mat-card-header >
+                <mat-card-title>{{item.itemName}}</mat-card-title>
+                <mat-card-subtitle>{{item.brand}}</mat-card-subtitle>
+            </mat-card-header>
+            <img mat-card-image class="forimage" src="{{item.itemImagePath}}" alt="Photo of a Shiba Inu">
+            <mat-card-content>
+                <p>
+                    <!-- {{item.description}}<br> -->
+                    Unit Price: <b>{{item.unitPrice}}</b><br>
+                    Available:  <b [ngClass]="{reOrderCss: reOrder}">{{item.quantity}}</b><br>  {{item.type}}                
+                </p>
+                
+            </mat-card-content>
+            <!-- <mat-card-actions>
+                    <form [formGroup]="updateForm">
+                            <div class="example-button-row">
+                                        <button mat-raised-button [disabled]="manual" (click)="onClickManual()">Manual</button>
+                                        <button mat-raised-button [disabled]="byScaler" (click)="onClickScaler()">By Scaler</button>
+                            </div>
+                        <table class="" style="width: 159px" cellspacing="0">
+                            <tr *ngIf="manual">
+                                <td>
+                                    <mat-form-field class="" style="width: 70%">
+                                            <input 
+                                                matInput 
+                                                type="number" 
+                                                placeholder="Quantity"
+                                                formControlName="quantity"
+                                               >
+                                    </mat-form-field>
+
+                                    <div class="input-group-append">
+                                        <span class="input-group-text">{{item.type}}</span>
+                                    </div>
+                                </td>
+                            </tr>
+
+                            <tr *ngIf="byScaler">
+                                <td>
+                                        <mat-form-field class="" style="width: 70%">
+                                                <input 
+                                                    matInput 
+                                                    type="number" 
+                                                    placeholder="Quantity"
+                                                    formControlName="quantity"
+                                                    value="{{newQuantity}}"
+                                                   >
+                                        </mat-form-field>
+
+                                        <mat-form-field class="" style="width: 70%">
+                                                <input 
+                                                    matInput 
+                                                    type="number" 
+                                                    placeholder="Unit value"
+                                                    formControlName="unitValue"
+                                                    value="{{item.unitValue}}"
+                                                   >
+                                        </mat-form-field>
+    
+                                        
+                                            <span class="input-group-text">{{item.type}}</span>
+                                
+                                    </td>
+
+                            </tr>
+
+                           
+                           
+
+                        </table>
+
+
+                        <div class="btn-group" role="group" aria-label="Basic example">
+                            <button class="btn"  
+                                    data-toggle="tooltip"
+                                    title="Reset"
+                                    (click)="reset()"> 
+                                    
+                                    <i class="material-icons">
+                                            replay
+                                    </i>
+                            </button>
+
+                            <button class="btn"  
+                                    data-toggle="tooltip"
+                                    title="Update unit price"
+                                    (click)="updateQuantity()" > 
+                                    <i class="material-icons">
+                                            cached
+                                    </i>
+                            </button>
+
+                           
+
+                            <button class="btn"  
+                                    data-toggle="tooltip"
+                                    title="More details" 
+                                    (click)="itemDetails(item)"> 
+                                    <i class="material-icons">
+                                            list_alt               
+                                    </i>  
+                            </button>                                                       
+                        </div>
+
+                       
+                </form>
+            </mat-card-actions> -->
+        
+        </mat-card>
+    </div> 
+
+
+         <!-- <button class="btn"  
+                                    data-toggle="tooltip"
+                                    title="Remove Item"
+                                    (click)="onRemove()"
+                                    [disabled]="allowRemove"> 
+                                    <i class="material-icons icon-red">
+                                            remove_circle_outline
+                                    </i>
+                            </button> -->
+
+                             <!-- <button mat-raised-button color="primary" type="reset">Reset</button>
+                        <button mat-raised-button color="primary" type="submit">Add</button> -->

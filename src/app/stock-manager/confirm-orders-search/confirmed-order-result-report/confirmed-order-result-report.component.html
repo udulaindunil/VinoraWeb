@@ -1,0 +1,48 @@
+<div class="row" *ngIf="items | async; let items;" style="background-color: aliceblue;">
+    <div class="col-12">
+        <b>Ordered Items</b><br>
+    </div>
+    <div class="col-12" *ngFor="let item of items">
+        <table style="font-size: 12px;">
+            <thead>
+                <tr>
+                    <th>
+                        Brand
+                    </th>
+    
+                    <th>
+                        Item Name
+                    </th>
+    
+                    <th>
+                        Unit price
+                    </th>
+                    <th>
+                        Quantity
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        {{item.brand}}
+                    </td>
+                    <td>
+                        {{item.itemName}}
+                    </td>
+                    <td>
+                        {{item.unitPrice}}
+                    </td>
+                    <td>
+                        {{item.quantity}}
+                    </td>
+                   
+                </tr>
+            </tbody>
+    
+        </table>  
+    </div>
+          
+        
+    </div>
+    

@@ -1,0 +1,37 @@
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+.element{
+    margin:3px;
+    padding: 3px;
+}
+
+.transparent{
+    text-align: left;
+    background: none;
+    border: none;
+    color:darkgray;
+  }
+
+  .bc{
+    background-image:url('https://www.barraques.cat/pngfile/big/10-103322_white-background-wallpaper-hd-1080p-top-10-difficult.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+  }
+
+
+  .confirm-dialog-container #yes-button{
+    height: 50px;
+    width: 50px;
+  }
+
+  .confirm-dialog-container #no-button{
+    height: 50px;
+    width: 50px;
+  }
+
+  .confirm-dialog-container #close-icon{
+    padding-right: 90%;
+    color: brown;
+    display: flex;
+  }

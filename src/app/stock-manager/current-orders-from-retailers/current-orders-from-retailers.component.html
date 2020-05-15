@@ -1,0 +1,12 @@
+<div class="row">
+        <h3>Purches Orders</h3><br>
+
+        <button mat-button (click)="onSearch()">Search</button>
+
+    </div>
+    <div class="row">
+        <div class="col" *ngIf="orders | async; let orders; else loading">
+            <app-cur-order-element *ngFor="let order of orders" [order]="order" ></app-cur-order-element>
+        </div>
+        <ng-template #loading>No current orders available!!&hellip;</ng-template>
+    </div>

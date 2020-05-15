@@ -1,0 +1,14 @@
+<div class="row">
+
+    <div class="col-7">
+        <h2>Registered sales representatives</h2>
+        <app-display-sales-representative *ngFor="let salesrepresentative of salesrepresentatives | async" [salesrepresentative]="salesrepresentative"></app-display-sales-representative>
+    </div>
+
+    <div class="col-5">
+        <button (click)="onRegister()" mat-flat-button color="primary">+ Register</button>
+        <router-outlet></router-outlet>
+    </div>
+</div>
+
+

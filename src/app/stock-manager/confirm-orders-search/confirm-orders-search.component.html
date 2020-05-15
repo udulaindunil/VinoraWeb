@@ -1,0 +1,252 @@
+<div class="row">
+    <button  mat-button color="primary" (click)="onSummary()">{{report ? 'Detailes' : 'Summary'}}</button>
+    <button mat-button color="primary" (click)="onReport()">Report</button>
+</div>
+<div class="row" *ngIf="!searching">
+    <div class="col-3"> 
+   
+
+
+        <h4>Date Range</h4>
+
+            <mat-form-field>
+              <mat-label>From</mat-label>
+              <input matInput [matDatepicker]="dp1" [(ngModel)]="fromDate" disabled>
+              <mat-datepicker-toggle matSuffix [for]="dp1"></mat-datepicker-toggle>
+              <mat-datepicker #dp1 disabled="false"></mat-datepicker>
+            </mat-form-field>
+          <br>
+
+            <mat-form-field>
+              <mat-label>To</mat-label>
+              <input matInput [matDatepicker]="dp2" [(ngModel)]="toDate" disabled>
+              <mat-datepicker-toggle matSuffix [for]="dp2"></mat-datepicker-toggle>
+              <mat-datepicker #dp2 disabled="false"></mat-datepicker>
+            </mat-form-field>
+
+            <section class="example-section">
+                <mat-checkbox class="example-margin" [(ngModel)]="dateRangeTag">Active</mat-checkbox>
+            </section>
+
+            <button mat-button color="primary" (click)="onSearchDateRange()" [disabled]="!dateRangeTag">Search</button>
+
+          <hr> 
+
+
+<br>
+<br>
+<br>
+          <h4>Sepcific date</h4>
+            
+          <mat-form-field>
+              <mat-label>From</mat-label>
+              <input matInput [matDatepicker]="spdatep" [(ngModel)]="specificDate" disabled>
+              <mat-datepicker-toggle matSuffix [for]="spdatep"></mat-datepicker-toggle>
+              <mat-datepicker #spdatep disabled="false"></mat-datepicker>
+          </mat-form-field>
+
+          <section class="example-section">
+              <mat-checkbox class="example-margin" [(ngModel)]="specificDatetag">Active</mat-checkbox>
+          </section>
+
+          <button mat-button color="primary" (click)="onSearchDate()" [disabled]="!specificDatetag">Search</button>
+
+          <hr>
+
+          <br>
+          <br>
+          <br>
+
+          <h4>By year and month</h4>
+
+            <mat-form-field>
+                <mat-label>Year</mat-label>
+                <mat-select [(value)]="year">
+                    <mat-option value="2019">2019</mat-option>
+                    <mat-option value="2020">2020</mat-option>
+                    <mat-option value="2021">2021</mat-option>
+                    <mat-option value="2022">2022</mat-option>
+                    <mat-option value="2023">2023</mat-option>
+                    <mat-option value="2024">2024</mat-option>
+                    <mat-option value="2025">2025</mat-option>
+                    <mat-option value="2026">2026</mat-option>
+                </mat-select>
+            </mat-form-field>
+    
+            <br>
+
+            <mat-form-field>
+                <mat-label>Month</mat-label>
+                <mat-select [(value)]="monthIndex">
+                    <!-- <mat-option>None</mat-option> -->
+                    <mat-option value="1">January</mat-option>
+                    <mat-option value="2">February</mat-option>
+                    <mat-option value="3">March</mat-option>
+                    <mat-option value="4">April</mat-option>
+                    <mat-option value="5">May</mat-option>
+                    <mat-option value="6">June</mat-option>
+                    <mat-option value="7">July</mat-option>
+                    <mat-option value="8">August</mat-option>
+                    <mat-option value="9">September</mat-option>
+                    <mat-option value="10">Octomber</mat-option>
+                    <mat-option value="11">November</mat-option>
+                    <mat-option value="12">December</mat-option>
+                </mat-select>
+            </mat-form-field>
+            
+            <p>You selected: {{year}} / {{months[monthIndex-1]}}</p>
+
+            <section class="example-section">
+                <mat-checkbox class="example-margin" [(ngModel)]="yearMonthTag">Active</mat-checkbox>
+            </section>
+
+            <button mat-button color="primary" (click)="onSearchYearMonth()" [disabled]="!yearMonthTag">Search</button>
+
+            <br>
+            <br>
+            <br>
+         
+
+
+
+
+
+            <h4>By Retailers</h4>
+            <div *ngIf="retailersTakens | async; let retailers">
+
+           
+                <form [formGroup]="selectRetailer">
+                
+                    <mat-form-field>
+                    <mat-label>Sales Representatives</mat-label>
+                    <mat-select formControlName="retailer">
+                        <mat-option *ngFor="let ret of retailers" [value]="ret.retailerId">
+                            {{ret.retailerEmail}}
+                        </mat-option>
+                    </mat-select>
+                    </mat-form-field>
+                </form>
+
+                <section class="example-section">
+                    <mat-checkbox class="example-margin" [(ngModel)]="retailerTag">Active</mat-checkbox>
+                </section>
+
+                <button mat-button color="primary" (click)="onSearchRetailer()" [disabled]="!retailerTag">Search</button>
+            </div>
+            <hr>
+
+
+            <br>
+            <br>    
+            <br>
+
+            <h4>By total amount</h4>
+            
+            <mat-form-field>
+                <mat-label>Less than</mat-label>
+                <input matInput [(ngModel)]="totalMax" [min]="0">
+            </mat-form-field>
+            <br>
+
+            <mat-form-field>
+                <mat-label>More than</mat-label>
+                <input matInput [(ngModel)]="totalMin" [min]="0">
+            </mat-form-field>
+
+            <section class="example-section">
+                <mat-checkbox class="example-margin" [(ngModel)]="totalRangeTag">Active</mat-checkbox>
+            </section>
+
+            <button mat-button color="primary" (click)="onSearchTotalRange()" [disabled]="!totalRangeTag">Search</button>
+
+            <hr>
+
+            
+    </div>
+
+    <div *ngIf="!report" class="col-9">
+        <div *ngIf="orders | async; let orders; else loading">
+        
+        <app-con-order-element *ngFor="let order of orders" [order]="order" ></app-con-order-element>
+        <!-- <li *ngFor="let order of orders" (click)="onSelectOrder(order.id)" [order]="order"> -->
+        </div>
+        <ng-template #loading>Search Result here&hellip;</ng-template>
+    </div>
+
+    <div  *ngIf="report" class="col-9">
+        <div *ngIf="orders | async; let orders; else loading">
+            <div class="row" id="content1" #content1 >
+            <table>
+                <thead>
+                    <tr>
+                        <th>
+                            Shop Name
+                        </th>
+                        <th>
+                            Create Date
+                        </th>
+                        <th>
+                            Total
+                        </th>
+                    </tr>
+                </thead>
+                    <tbody>
+                        <tr *ngFor="let order of orders">
+                            <td>
+                                {{order.shopName}}
+                            </td>
+                            <td>
+                                {{order.year}}/{{order.month}}/{{order.date}}
+                            </td>
+                            <td>
+                                {{order.total}}
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                
+            </div>
+        </div>
+        <ng-template #loading>Search Result here&hellip;</ng-template>
+    </div>
+
+</div>
+<!-- <div class="row" *ngIf="orders | async; let orders; else loading">
+    <div class="col-12" >
+        <app-confirmed-order-result-report *ngFor="let order of orders" [order]="order">
+        </app-confirmed-order-result-report>
+    </div>
+</div> -->
+
+<div class="row" id="content1" #content1 style="height: auto;">
+    <div class="col-12" *ngIf="orders | async; let orders;">
+    <h4>Confirmed Orders by {{stockManagerEmail}}</h4>
+
+    <button mat-raised-button (click)=requestedDownloadPdf()>Download PDF</button>
+    <!-- <p> Date: {{date}}</p> -->
+
+    <div class="row" *ngFor="let order of orders" style="margin-top: 20px;">
+        <div class="col-3" style="background-color: beige;">
+            <p> 
+                <b>Company</b>     : {{order.companyName}}
+                <b>Shop Name</b>   : {{order.shopName}}<br>
+                <b>Create Date</b> : {{order.year}}/{{order.month}}/{{order.date}}<br>
+                <b>Total</b>       : {{order.total}}<br>
+                <b>Report Date</b> : {{theDate}}
+            </p>
+        </div>
+        <div class="col-9" >
+            <app-confirmed-order-result-report [order]="order">
+
+            </app-confirmed-order-result-report>
+        </div>
+    </div>
+   
+    <br>
+   
+</div>
+</div>
+
+
+

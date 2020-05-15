@@ -1,0 +1,33 @@
+<div class="row" id="content">
+    <div class="col" *ngIf="company | async; let company; else ">
+        <div class="row" *ngFor="let company of company" > 
+          <div class="col col-3"> 
+              <img src="{{company.imagePath}}" style="height: 75px; width: 100px;"  alt="Photo of a Shiba Inu">
+              <br>
+              {{company.companyName}}<br>
+              {{company.email}}
+          </div>
+          <div class="col col-6">    
+              <p>
+                <b>Purches Date: </b> {{confirmOrder.createDate}}<br>
+                <b>Total Amount: </b> {{confirmOrder.total}} .00 Rs/-<br>
+                <!-- <b>Order State: </b> {{currentOrder.state}}<br> -->
+              </p>
+              <button mat-button>
+                <i class="material-icons">perm_phone_msg</i>   Inform
+              </button>
+          </div> 
+          <div class="col col-2">
+          </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="row"  *ngIf="items | async; let items ; else" id="contenttwo">
+    <app-confirm-order-item class="col col-2" *ngFor="let item of items" [item]="item"></app-confirm-order-item>
+</div>
+
+<br>
+<br>
+<br>

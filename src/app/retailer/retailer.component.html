@@ -1,0 +1,52 @@
+ <app-retailer-nav></app-retailer-nav>
+ <mat-sidenav-container>
+   <mat-sidenav #sidenav (opend)="log('opened')" (closed)="log('Closed')" mode="side" [(opened)]="opened">
+    <div class="container">
+      <div class="row">
+        <div class="col">
+              <div class="btn-group-vertical example-button-row " > 
+          
+                      
+                    
+              
+  <div class="list-group " id="list-tab" role="tablist">
+    <a class="list-group-item list-group-item-action transparent" routerLinkActive="active" routerLink="currentOrders" >Current Orders</a>  
+    <a class="list-group-item list-group-item-action transparent" routerLinkActive="active" routerLink="confirmedOrders" >Confirmed Orders</a>                
+    <a class="list-group-item list-group-item-action transparent" routerLinkActive="active" routerLink="registredConpanies" >Registered Companies</a>
+    <a class="list-group-item list-group-item-action transparent" routerLinkActive="active" routerLink="allCompanies" >New Companies</a>
+    <a class="list-group-item list-group-item-action transparent" routerLinkActive="active" routerLink="deliveredOrders">Deliveries</a>
+    <!-- <a class="list-group-item list-group-item-action transparent" routerLinkActive="active" routerLink="newStock" >New Stock</a> -->
+  
+
+    <button  class="transparent" mat-button   [matMenuTriggerFor]="reports">Reports</button>
+
+      <mat-menu #reports="matMenu">
+        <a class="list-group-item list-group-item-action" routerLinkActive="active" routerLink="previousOrders" >By Company</a>
+        <a class="list-group-item list-group-item-action" routerLinkActive="active" routerLink="orderedItems" >By Item</a>
+        <a class="list-group-item list-group-item-action" routerLinkActive="active" routerLink="registeredDeliveryCompany" >Registered Delivery companies</a>
+        <a class="list-group-item list-group-item-action" routerLinkActive="active" >Previous Deliveries</a>
+       
+        
+    
+      </mat-menu>
+
+  </div>
+
+              </div>  
+         </div>
+      </div>
+    </div>
+   </mat-sidenav>
+
+   <mat-sidenav-content class="bc">
+     <button class="btn btn-light" (click)="sidenav.toggle()"><i class="material-icons">
+        list
+        </i></button>
+              <router-outlet></router-outlet>   
+      
+   </mat-sidenav-content>
+
+
+ </mat-sidenav-container>
+
+ <app-fotter></app-fotter>

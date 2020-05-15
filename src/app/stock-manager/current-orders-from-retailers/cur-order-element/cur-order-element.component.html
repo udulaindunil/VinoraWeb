@@ -1,0 +1,35 @@
+<div class="row">
+    <div class="col" *ngIf="retailers | async; let retailers; else ">
+        <div class="row" *ngFor="let retailer of retailers" > 
+          <div class="col col-3"> 
+              <br>
+          </div>
+          <div class="col col-3">    
+              <p>
+                <b>Retailer: </b> {{retailer.email}}<br>
+                <b>Purches Date: </b> {{order.createDate}}<br>
+                <b>Total Amount: </b> {{order.total}} .00 Rs/-<br>
+              </p>
+              <!-- <button mat-button (focus)="myfunction()">
+                <i class="material-icons">perm_phone_msg</i>   Inform
+              </button> -->
+
+              <button mat-raised-button (click)="confirmOrder()">
+                  Confirm Order
+                  <i class="material-icons">menu_open</i> 
+                </button>
+                
+          </div> 
+          <div class="col col-3">
+          </div>
+        </div>
+    </div>
+</div>
+
+<div class="row"  *ngIf="items | async; let items ; else">
+    <app-stm-crt-order-item-elemet class="col col-2" *ngFor="let item of items" [item]="item" [orderId]="orderId"></app-stm-crt-order-item-elemet>
+</div>
+
+<br>
+<br>
+<br>

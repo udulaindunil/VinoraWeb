@@ -1,0 +1,13 @@
+
+
+
+<div class="row" *ngIf="saleRepresentatives | async; let saleRepresentatives; else loading">
+    <ul class="list-group">  
+    <li class="list-group-item list-group-item-primary" *ngFor="let saleRep of saleRepresentatives" (click)="onSelect(saleRep)">
+        {{saleRep.email}}
+    </li>
+    </ul>
+</div>
+
+<ng-template #loading>No Sale representatives available!!&hellip;</ng-template>
+
